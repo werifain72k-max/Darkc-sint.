@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DARKC-SINT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="boot-screen">
+  <div class="boot-title">DARKC-SINT TERMINAL</div>
+  <div id="boot-lines"></div>
+  <div class="progress">
+    <div id="progress-fill"></div>
+  </div>
+  <p id="boot-status">INITIALIZING...</p>
+</div>
+
+<div id="main-site" hidden>
+  <header>
+    <h1>DARKC-SINT</h1>
+    <p>CYBER SECURITY DASHBOARD</p>
+  </header>
+
+  <nav>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#terminal">Terminal</a>
+    <a href="#generator">Password Generator</a>
+    <a href="#analyzer">Security Analyzer</a>
+    <a href="#network">Network Info</a>
+  </nav>
+
+  <main>
+    <section class="panel" id="dashboard">
+      <h2>◈ Dashboard</h2>
+      <p>Status : <span style="color:#ff3030">ONLINE</span></p>
+      <p>System : DARKC-SINT</p>
+      <p>Mode : Defensive Security</p>
+    </section>
+
+    <section class="panel" id="terminal">
+      <h2>⌘ Terminal</h2>
+      <p id="terminalOutput">DARKC-SINT terminal ready...</p>
+      <input id="terminalInput" placeholder="Tape help">
+      <button onclick="runCommand()">EXECUTE</button>
+    </section>
+
+    <section class="panel" id="generator">
+      <h2>◈ Password Generator</h2>
+      <p id="password">Aucun mot de passe généré</p>
+      <button onclick="generatePassword()">GENERATE</button>
+    </section>
+
+    <section class="panel" id="analyzer">
+      <h2>◈ Security Analyzer</h2>
+      <input id="checkPassword" type="password" placeholder="Mot de passe fictif">
+      <button onclick="analyzePassword()">ANALYZE</button>
+      <p id="result"></p>
+    </section>
+
+    <section class="panel" id="network">
+      <h2>◈ Network Info</h2>
+      <p>Aucune adresse IP n'est collectée.</p>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
