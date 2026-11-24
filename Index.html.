@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARKC-SINT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>DARKC-SINT</h1>
+  <p>Security tools dashboard</p>
+  <h2>Bienvenue sur DARKC-SINT</h2>
+  <p>Plateforme éducative de cybersécurité.</p>
+</body>
+</html>
