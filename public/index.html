@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <title>DARKC-SINT | Cyber Security Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- GREEN BOOT SCREEN -->
+<div id="boot-screen">
+    <div class="boot-content">
+        <h1>DARKC-SINT</h1>
+        <div id="boot-lines"></div>
+        <div class="progress">
+            <div id="progress-fill"></div>
+        </div>
+        <div id="boot-status">INITIALISATION... 0%</div>
+    </div>
+</div>
+
+<!-- RED MATRIX INTRO -->
+<div id="matrix-screen" style="display:none;">
+    <canvas id="matrix"></canvas>
+    <div class="matrix-title">DARKC-SINT</div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="main-site" style="display:none;">
+
+    <header class="topbar">
+        <button id="menuButton" onclick="toggleMenu()">☰</button>
+        <h2>DARKC-<span>SINT</span></h2>
+        <div class="online">● SYSTEM ONLINE</div>
+    </header>
+
+    <aside id="sidebar">
+        <div class="side-title">MAIN MENU</div>
+        <a href="#dashboard" class="nav-link active" data-page="dashboard">⌂ Dashboard</a>
+        <a href="#terminal" class="nav-link" data-page="terminal">⌘ Terminal</a>
+        <a href="#tools" class="nav-link" data-page="tools">⚙ Security Tools</a>
+        <a href="#generator" class="nav-link" data-page="generator">✦ Password Generator</a>
+        <a href="#analyzer" class="nav-link" data-page="analyzer">◈ Password Checker</a>
+        <a href="#network" class="nav-link" data-page="network">⌁ Network Monitor</a>
+        <a href="#threats" class="nav-link" data-page="threats">⚠ Threat Intelligence</a>
+        <a href="#hash" class="nav-link" data-page="hash"># SHA-256 Generator</a>
+        <a href="#logs" class="nav-link" data-page="logs">▤ Activity Logs</a>
+        <a href="#settings" class="nav-link" data-page="settings">⚙ Settings</a>
+        <a href="#visitor" class="nav-link" data-page="visitor">◉ Visitor Monitor</a>
+    </aside>
+
+    <main class="content">
+
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="page active">
+            <div class="hero">
+                <p class="red-text">CYBER SECURITY ENVIRONMENT</p>
+                <h1>WELCOME TO <span>DARKC-SINT</span></h1>
+                <p>Centralized cybersecurity learning and monitoring interface.</p>
+                <p class="red-text">SYSTEM STATUS: OPERATIONAL</p>
+            </div>
+
+            <section>
+                <h2>System Overview</h2>
+                <div class="stats">
+                    <div class="panel">
+                        <h3 id="statStatus">ONLINE</h3>
+                        <p>Platform status</p>
+                    </div>
+                    <div class="panel">
+                        <h3 id="statTools">10</h3>
+                        <p>Available modules</p>
+                    </div>
+                    <div class="panel">
+                        <h3 id="statTime">--:--</h3>
+                        <p>Local system time</p>
+                    </div>
+                    <div class="panel">
+                        <h3>ACTIVE</h3>
+                        <p>Security environment</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Quick Access</h2>
+                <div class="stats">
+                    <div class="panel">
+                        <h3>TERMINAL</h3>
+                        <p>Local command interface.</p>
+                        <a href="#terminal" class="tool-link" data-page="terminal">OPEN TERMINAL →</a>
+                    </div>
+                    <div class="panel">
+                        <h3>NETWORK</h3>
+                        <p>View browser and device information.</p>
+                        <a href="#network" class="tool-link" data-page="network">OPEN MONITOR →</a>
+                    </div>
+                    <div class="panel">
+                        <h3>HASH</h3>
+                        <p>Generate SHA-256 hashes locally.</p>
+                        <a href="#hash" class="tool-link" data-page="hash">OPEN GENERATOR →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TERMINAL -->
+        <div id="terminal" class="page">
+            <section>
+                <h2>System Terminal</h2>
+                <div class="terminal-box">
+                    <div id="terminalOutput">DARKC-SINT TERMINAL
+Type help to see available commands.</div>
+                    <div class="terminal-input">
+                        <span>root@darkc-sint:~$</span>
+                        <input id="terminalInput" type="text" placeholder="Enter command..." autocomplete="off">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TOOLS -->
+        <div id="tools" class="page">
+            <section>
+                <h2>Security Tools</h2>
+                <div class="stats">
+                    <div class="panel">
+                        <h3>Password Generator</h3>
+                        <p>Create a random password locally.</p>
+                        <a href="#generator" class="tool-link" data-page="generator">OPEN →</a>
+                    </div>
+                    <div class="panel">
+                        <h3>Password Checker</h3>
+                        <p>Check password quality locally.</p>
+                        <a href="#analyzer" class="tool-link" data-page="analyzer">OPEN →</a>
+                    </div>
+                    <div class="panel">
+                        <h3>SHA-256</h3>
+                        <p>Generate a text hash.</p>
+                        <a href="#hash" class="tool-link" data-page="hash">OPEN →</a>
+                    </div>
+                    <div class="panel">
+                        <h3>Network Monitor</h3>
+                        <p>View local browser information.</p>
+                        <a href="#network" class="tool-link" data-page="network">OPEN →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PASSWORD GENERATOR -->
+        <div id="generator" class="page">
+            <section>
+                <h2>Password Generator</h2>
+                <div class="panel">
+                    <label for="passwordLength">Password length</label>
+                    <input id="passwordLength" type="number" min="8" max="64" value="20">
+                    <button id="generatePassword">GENERATE PASSWORD</button>
+                    <input id="generatedPassword" type="text" readonly placeholder="Generated password">
+                    <button id="copyPassword">COPY</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- PASSWORD CHECKER -->
+        <div id="analyzer" class="page">
+            <section>
+                <h2>Password Checker</h2>
+                <div class="panel">
+                    <label for="passwordToCheck">Test a password locally</label>
+                    <input id="passwordToCheck" type="password" placeholder="Enter a test password">
+                    <button id="checkPassword">ANALYZE</button>
+                    <p id="passwordResult">No analysis yet.</p>
+                    <small>Your password is checked in this browser and is not sent to the server.</small>
+                </div>
+            </section>
+        </div>
+
+        <!-- NETWORK -->
+        <div id="network" class="page">
+            <section>
+                <h2>Network Monitor</h2>
+                <div class="panel">
+                    <p>Browser: <span id="browserInfo">Loading...</span></p>
+                    <p>Platform: <span id="platformInfo">Loading...</span></p>
+                    <p>Language: <span id="languageInfo">Loading...</span></p>
+                    <p>Screen: <span id="screenInfo">Loading...</span></p>
+                    <p>Connection: <span id="connectionInfo">Not available</span></p>
+                    <small>This module displays information exposed by your browser. It does not collect raw IP addresses.</small>
+                </div>
+            </section>
+        </div>
+
+        <!-- THREATS -->
+        <div id="threats" class="page">
+            <section>
+                <h2>Threat Intelligence</h2>
+                <div class="panel">
+                    <h3>Security Resources</h3>
+                    <p>Learn about current cybersecurity threats and ways to protect your devices.</p>
+                    <a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener noreferrer">CERT-FR — Security advisories</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- HASH -->
+        <div id="hash" class="page">
+            <section>
+                <h2>SHA-256 Generator</h2>
+                <div class="panel">
+                    <label for="hashInput">Text to hash</label>
+                    <textarea id="hashInput" placeholder="Enter text..."></textarea>
+                    <button id="generateHash">GENERATE SHA-256</button>
+                    <div id="hashResult"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- LOGS -->
+        <div id="logs" class="page">
+            <section>
+                <h2>Activity Logs</h2>
+                <div class="panel">
+                    <div id="logOutput">DARKC-SINT logs initialized.</div>
+                    <button id="clearLogs">CLEAR LOGS</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- SETTINGS -->
+        <div id="settings" class="page">
+            <section>
+                <h2>Settings</h2>
+                <div class="panel">
+                    <label>
+                        <input type="checkbox" id="matrixToggle">
+                        Matrix visual effects
+                    </label>
+                    <p id="settingsStatus">Visual settings</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISITOR MONITOR -->
+        <div id="visitor" class="page">
+            <section>
+                <h2>Visitor Monitor</h2>
+                <div class="panel">
+                    <h3>Visit notifications</h3>
+                    <p>Optional visit statistics can be sent to the site administrator after visitor consent.</p>
+                    <p>Collected data: device category, browser, page and visit time.</p>
+                    <p>No raw IP address is collected by this feature.</p>
+                    <p id="visitorStatus">Consent interface ready.</p>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            DARKC-SINT V3 — CYBER SECURITY LEARNING PLATFORM
+        </footer>
+
+    </main>
+</div>
+
+<!-- VISITOR CONSENT -->
+<div id="visitor-consent" style="display:none; position:fixed; inset:0; z-index:11000; background:#000e; align-items:center; justify-content:center; padding:20px;">
+    <div style="max-width:420px; width:100%; background:#101010; border:1px solid #ed2020; border-radius:9px; padding:24px;">
+        <p style="color:#ff4141; letter-spacing:2px; margin-bottom:12px;">DARKC-SINT / PRIVACY</p>
+        <h2 style="margin-bottom:12px;">VISIT STATISTICS</h2>
+        <p style="color:#ccc; line-height:1.6; margin-bottom:14px;">
+            Acceptez-vous l'envoi facultatif à l'administrateur de statistiques
+            concernant votre visite : type d'appareil, navigateur, page consultée
+            et heure ? Votre choix est facultatif.
+        </p>
+        <button id="visitor-accept" type="button">ACCEPTER</button>
+        <button id="visitor-refuse" type="button">REFUSER</button>
+    </div>
+</div>
+
+<div id="notifications"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
