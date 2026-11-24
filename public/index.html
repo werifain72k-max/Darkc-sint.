@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <title>DARKC-SINT | Cyber Security</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- INTRO / LOADING -->
+<div id="boot-screen">
+  <div class="boot-content">
+    <div class="boot-logo">DARKC<span>-SINT</span></div>
+    <div class="boot-label">INITIALIZING SYSTEM</div>
+
+    <div id="boot-lines"></div>
+
+    <div class="progress-track">
+      <div id="progress-fill"></div>
+    </div>
+
+    <div class="boot-bottom">
+      <span id="boot-status">LOADING MODULES...</span>
+      <span id="boot-percent">0%</span>
+    </div>
+  </div>
+</div>
+
+<!-- MATRIX INTRO -->
+<div id="matrix-screen">
+  <canvas id="matrix"></canvas>
+  <div class="matrix-title">DARKC-SINT</div>
+</div>
+
+<!-- APPLICATION -->
+<div id="main-site" class="hidden">
+
+  <header class="topbar">
+    <div class="brand">DARKC<span>-SINT</span></div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="topbar-right">
+      <span id="clock">00:00:00</span>
+      <span class="status-online">● SYSTEM ONLINE</span>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-title">MAIN MENU</div>
+
+      <button class="nav-link active" data-page="dashboard">
+        Dashboard
+      </button>
+      <button class="nav-link" data-page="terminal">
+        Terminal
+      </button>
+      <button class="nav-link" data-page="password">
+        Password Generator
+      </button>
+      <button class="nav-link" data-page="analyzer">
+        Password Analyzer
+      </button>
+      <button class="nav-link" data-page="network">
+        Network Monitor
+      </button>
+      <button class="nav-link" data-page="hash">
+        SHA-256 Generator
+      </button>
+      <button class="nav-link" data-page="discord">
+        Discord Lookup
+      </button>
+      <button class="nav-link" data-page="threats">
+        Threat Intelligence
+      </button>
+      <button class="nav-link" data-page="logs">
+        Log Viewer
+      </button>
+      <button class="nav-link" data-page="settings">
+        Settings
+      </button>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- DASHBOARD -->
+      <section class="page active" id="dashboard">
+        <div class="page-heading">
+          <h1>DASHBOARD</h1>
+          <p>Welcome to DARKC-SINT security interface.</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="panel">
+            <h3>System Status</h3>
+            <div class="status-online">● OPERATIONAL</div>
+          </div>
+
+          <div class="panel">
+            <h3>Security Modules</h3>
+            <div>10 MODULES AVAILABLE</div>
+          </div>
+
+          <div class="panel">
+            <h3>Environment</h3>
+            <div id="browserInfo">Detecting browser...</div>
+          </div>
+
+          <div class="panel">
+            <h3>Platform</h3>
+            <div id="platformInfo">Detecting platform...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TERMINAL -->
+      <section class="page" id="terminal">
+        <div class="page-heading">
+          <h1>TERMINAL</h1>
+          <p>Interactive local command interface.</p>
+        </div>
+
+        <div class="panel terminal-panel">
+          <div id="terminalOutput">
+            <div>DARKC-SINT TERMINAL</div>
+            <div>Type help to see available commands.</div>
+          </div>
+
+          <div class="terminal-input-row">
+            <span>root@darkc:~$</span>
+            <input
+              id="terminalInput"
+              type="text"
+              placeholder="Enter command..."
+              autocomplete="off"
+              onkeydown="if(event.key==='Enter') runCommand()"
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- PASSWORD GENERATOR -->
+      <section class="page" id="password">
+        <div class="page-heading">
+          <h1>PASSWORD GENERATOR</h1>
+          <p>Generate a random secure password.</p>
+        </div>
+
+        <div class="panel">
+          <label for="passwordLength">Password length</label>
+          <input id="passwordLength" type="number" min="8" max="64" value="20">
+
+          <button onclick="generatePassword()">GENERATE PASSWORD</button>
+
+          <div class="result-area">
+            <input id="password" type="text" readonly placeholder="Generated password">
+            <button onclick="copyPassword()">COPY</button>
+          </div>
+
+          <div id="copyStatus"></div>
+        </div>
+      </section>
+
+      <!-- PASSWORD ANALYZER -->
+      <section class="page" id="analyzer">
+        <div class="page-heading">
+          <h1>PASSWORD ANALYZER</h1>
+          <p>Evaluate password strength locally.</p>
+        </div>
+
+        <div class="panel">
+          <label for="checkPassword">Password to analyze</label>
+          <input id="checkPassword" type="password" placeholder="Enter a password">
+
+          <button onclick="analyzePassword()">ANALYZE</button>
+
+          <div id="result"></div>
+        </div>
+      </section>
+
+      <!-- NETWORK MONITOR -->
+      <section class="page" id="network">
+        <div class="page-heading">
+          <h1>NETWORK MONITOR</h1>
+          <p>Browser and device information.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Browser</h3>
+          <div id="browserInfo">Loading...</div>
+
+          <h3>Platform</h3>
+          <div id="platformInfo">Loading...</div>
+
+          <h3>Language</h3>
+          <div id="languageInfo">Loading...</div>
+
+          <h3>Screen</h3>
+          <div id="screenInfo">Loading...</div>
+        </div>
+      </section>      <!-- SHA-256 -->
+      <section class="page" id="hash">
+        <div class="page-heading">
+          <h1>SHA-256 GENERATOR</h1>
+          <p>Generate a SHA-256 hash from text.</p>
+        </div>
+
+        <div class="panel">
+          <textarea id="hashInput" placeholder="Enter text..."></textarea>
+          <button id="hashButton">GENERATE HASH</button>
+          <div id="hashResult"></div>
+        </div>
+      </section>
+
+      <!-- DISCORD LOOKUP -->
+      <section class="page" id="discord">
+        <div class="page-heading">
+          <h1>DISCORD LOOKUP</h1>
+          <p>Lookup publicly available Discord profile information.</p>
+        </div>
+
+        <div class="panel">
+          <label for="discordId">Discord User ID</label>
+          <input id="discordId" type="text" placeholder="Enter Discord ID">
+
+          <button id="discordLookupButton">LOOKUP</button>
+
+          <div id="discordResult"></div>
+        </div>
+      </section>
+
+      <!-- THREAT INTELLIGENCE -->
+      <section class="page" id="threats">
+        <div class="page-heading">
+          <h1>THREAT INTELLIGENCE</h1>
+          <p>Security awareness and threat information.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Security Status</h3>
+          <div class="status-online">● MONITORING</div>
+          <p>Use this section to display security alerts and verified threat information.</p>
+        </div>
+      </section>
+
+      <!-- LOG VIEWER -->
+      <section class="page" id="logs">
+        <div class="page-heading">
+          <h1>LOG VIEWER</h1>
+          <p>Application activity.</p>
+        </div>
+
+        <div class="panel">
+          <div id="logOutput">[SYSTEM] DARKC-SINT initialized.</div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="page" id="settings">
+        <div class="page-heading">
+          <h1>SETTINGS</h1>
+          <p>Configure your interface.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Interface</h3>
+
+          <label>
+            <input type="checkbox" id="matrixSetting" checked>
+            Enable Matrix intro
+          </label>
+
+          <button id="saveSettings">SAVE SETTINGS</button>
+          <div id="settingsStatus"></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        DARKC-SINT — CYBER SECURITY INTERFACE
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- NOTIFICATIONS -->
+  <div id="notifications"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
