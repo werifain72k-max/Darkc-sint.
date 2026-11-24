@@ -1,0 +1,91 @@
+/* DARKC-SINT INTRO FIX */
+
+#boot-screen {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 35px 0 0 35px;
+  background: #050505;
+}
+
+.boot-content {
+  width: min(420px, 85vw);
+}
+
+.boot-logo {
+  color: #00ff75;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.boot-logo span,
+.boot-label,
+#boot-lines,
+.boot-bottom {
+  color: #00ff75;
+}
+
+.boot-label {
+  font-size: 10px;
+  margin: 8px 0 15px;
+}
+
+#boot-lines {
+  min-height: 130px;
+  font-size: 11px;
+  line-height: 1.8;
+  overflow: hidden;
+}
+
+#boot-lines div {
+  animation: bootLineAppear .3s ease both;
+}
+
+@keyframes bootLineAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boot-bottom {
+  font-size: 10px;
+}
+
+#matrix-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+}
+
+.matrix-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: clamp(28px, 6vw, 60px);
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-shadow: 0 0 15px #fff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* MENU */
+.menu-toggle {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: auto;
+  z-index: 100;
+}
+
+.topbar {
+  position: relative;
+}
