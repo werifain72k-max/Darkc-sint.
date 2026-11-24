@@ -1,0 +1,48 @@
+
+/* ==========================================
+   VISITOR MONITOR — DARKC-SINT
+========================================== */
+
+#visitor-consent {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+}
+
+#visitor-consent > div {
+    width: 100%;
+    max-width: 420px;
+    padding: 25px;
+    background: #101010;
+    border: 1px solid var(--red);
+    border-radius: 9px;
+    box-shadow: 0 0 30px #ed202044;
+}
+
+#visitor-consent h2 {
+    color: var(--red2);
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+}
+
+#visitor-consent p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+#visitor-consent button {
+    min-width: 110px;
+}
+
+#visitor-consent button:focus-visible {
+    outline: 2px solid var(--red2);
+    outline-offset: 3px;
+}
